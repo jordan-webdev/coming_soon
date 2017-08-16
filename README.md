@@ -14,3 +14,4 @@ Getting Started
 4. Import the ACF import file from the theme files
 5. Set the fields to the home page created in step 1
 6. Set background images by going to images, creating new posts and setting the featured image.
+7. Remember to delete any excess themes and plugins. Try to keep one other theme, just in case.
