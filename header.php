@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package speziale_coming
+ * @package coming_soon
  */
 
 ?><!DOCTYPE html>
@@ -18,13 +18,13 @@
 <link rel="profile" href="http://gmpg.org/xfn/11" rel="stylesheet">
 
 <?php
-$original_font = get_field('google_font', 2);
+$original_font = get_field('google_font', 6);
 $concat_font = str_replace(' ', '+', $original_font);
 $font = strtolower($concat_font);
 ?>
 <style>
   body{
-    font-family: <?php echo $original_font; ?>
+    font-family: <?php echo $font; ?>
   }
 </style>
 
