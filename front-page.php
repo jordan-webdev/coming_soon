@@ -7,9 +7,17 @@ $logo_bg_color = get_field('logo_background_color');
 $coming_soon_graphic = get_field('coming_soon_graphic');
 $coming_soon_graphic_mobile = get_field('coming_soon_graphic_mobile');
 $font_color = get_field('font_colour');
+
 $body_bg_color = get_field('body_background_color');
+$hex = $body_bg_color;
+list($r, $g, $b) = sscanf($hex, "#%02x%02x%02x");
+$opacity = get_field('body_background_opacity');
+$opacity = $opacity ? $opacity : 1;
+$body_bg_color_rgb = "rgba(" .$r. "," .$g. "," .$b. "," .$opacity. ")";
+
 $contact_background_colour = get_field('contact_background_colour');
 $contact_text_colour = get_field('contact_text_colour');
+$contact_font_size = get_field('contact_font_size');
 $phone = get_field('phone');
 $email = get_field('email');
 $address = get_field('address');
@@ -20,6 +28,7 @@ $copyright_brand = get_field('copyright_brand');
 $copyright_brand = $copyright_brand ? $copyright_brand : get_bloginfo('title');
 $copyright_colour = get_field('copyright_colour');
 $copyright_colour = $copyright_colour ? $copyright_colour : 'inherit';
+$copyright_font_size = get_field('copyright_font_size');
 ?>
 
 <?php get_header(); ?>
@@ -82,7 +91,7 @@ $copyright_colour = $copyright_colour ? $copyright_colour : 'inherit';
 
       <!-- Content -->
       <?php
-        $bg_colour = $body_bg_color ? 'background-color: ' .$body_bg_color .';' : 'background-color: transparent;';
+        $bg_colour = $body_bg_color ? 'background-color: ' .$body_bg_color_rgb .';' : 'background-color: transparent;';
         $colour = $font_color ? 'color: ' .$font_color. ';' : 'color: black;';
       ?>
 
@@ -124,7 +133,7 @@ $copyright_colour = $copyright_colour ? $copyright_colour : 'inherit';
       </div><!-- /content -->
 
       <!-- Contact -->
-      <div class="panel__contact-wrapper" style="background-color:<?php echo sanitize_hex_color($contact_background_colour); ?>; color: <?php echo sanitize_hex_color($contact_text_colour); ?>;">
+      <div class="panel__contact-wrapper" style="background-color:<?php echo sanitize_hex_color($contact_background_colour); ?>; color: <?php echo sanitize_hex_color($contact_text_colour); ?>; font-size: <?php echo ($contact_font_size ? esc_attr($contact_font_size) : "16px"); ?>;">
 
         <!-- Contact Items -->
         <div class="panel__contact">
@@ -168,7 +177,7 @@ $copyright_colour = $copyright_colour ? $copyright_colour : 'inherit';
 
         <!-- Copyright -->
         <div class="panel__copyright">
-          <p class="panel__copyright-statement" style="color: <?php echo esc_attr($copyright_colour); ?>">
+          <p class="panel__copyright-statement" style="color: <?php echo esc_attr($copyright_colour); ?>; font-size: <?php echo ($copyright_font_size ? $copyright_font_size : '12px'); ?>;">
             <span class="panel__copyright-brand">
               Copyright &copy; <?php echo date('Y'). ' ' .esc_html($copyright_brand); ?>. All rights reserved.
             </span>
