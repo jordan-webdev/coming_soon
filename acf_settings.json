@@ -295,13 +295,13 @@
                 "maxlength": ""
             },
             {
-                "key": "field_594d730af690c",
-                "label": "Phone",
-                "name": "phone",
-                "type": "text",
+                "key": "field_59de60e4e2067",
+                "label": "Contact Section",
+                "name": "contact_wysiwyg",
+                "type": "wysiwyg",
                 "value": null,
                 "instructions": "",
-                "required": 0,
+                "required": 1,
                 "conditional_logic": 0,
                 "wrapper": {
                     "width": "",
@@ -309,49 +309,10 @@
                     "id": ""
                 },
                 "default_value": "",
-                "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
-            },
-            {
-                "key": "field_594d7313f690d",
-                "label": "Email",
-                "name": "email",
-                "type": "email",
-                "value": null,
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": "",
-                "prepend": "",
-                "append": ""
-            },
-            {
-                "key": "field_594d731ef690e",
-                "label": "Address",
-                "name": "address",
-                "type": "text",
-                "value": null,
-                "instructions": "",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
+                "tabs": "all",
+                "toolbar": "full",
+                "media_upload": 1,
+                "delay": 0
             },
             {
                 "key": "field_594d7329f690f",
@@ -462,70 +423,14 @@
                 "mime_types": ""
             },
             {
-                "key": "field_594d7140f6908",
-                "label": "Include a list?",
-                "name": "include_list",
-                "type": "true_false",
-                "value": null,
-                "instructions": "Does this panel have a list to display?",
-                "required": 0,
-                "conditional_logic": 0,
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "message": "",
-                "default_value": 0,
-                "ui": 1,
-                "ui_on_text": "",
-                "ui_off_text": ""
-            },
-            {
-                "key": "field_594d718cf6909",
-                "label": "List title",
-                "name": "list_title",
-                "type": "text",
-                "value": null,
-                "instructions": "The title for the list.",
-                "required": 0,
-                "conditional_logic": [
-                    [
-                        {
-                            "field": "field_594d7140f6908",
-                            "operator": "==",
-                            "value": "1"
-                        }
-                    ]
-                ],
-                "wrapper": {
-                    "width": "",
-                    "class": "",
-                    "id": ""
-                },
-                "default_value": "",
-                "placeholder": "",
-                "prepend": "",
-                "append": "",
-                "maxlength": ""
-            },
-            {
-                "key": "field_594d71b9f690a",
-                "label": "List items",
-                "name": "list_items",
+                "key": "field_59de568468ebf",
+                "label": "Lists",
+                "name": "panel_lists",
                 "type": "repeater",
                 "value": null,
-                "instructions": "Add list items here. Drag and drop to reorder.",
-                "required": 1,
-                "conditional_logic": [
-                    [
-                        {
-                            "field": "field_594d7140f6908",
-                            "operator": "==",
-                            "value": "1"
-                        }
-                    ]
-                ],
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
                 "wrapper": {
                     "width": "",
                     "class": "",
@@ -538,12 +443,12 @@
                 "button_label": "",
                 "sub_fields": [
                     {
-                        "key": "field_594d71eef690b",
-                        "label": "List Item",
-                        "name": "list_item",
+                        "key": "field_594d718cf6909",
+                        "label": "List title",
+                        "name": "list_title",
                         "type": "text",
                         "value": null,
-                        "instructions": "",
+                        "instructions": "The title for the list.",
                         "required": 0,
                         "conditional_logic": 0,
                         "wrapper": {
@@ -556,6 +461,48 @@
                         "prepend": "",
                         "append": "",
                         "maxlength": ""
+                    },
+                    {
+                        "key": "field_594d71b9f690a",
+                        "label": "List items",
+                        "name": "list_items",
+                        "type": "repeater",
+                        "value": null,
+                        "instructions": "Add list items here. Drag and drop to reorder.",
+                        "required": 1,
+                        "conditional_logic": 0,
+                        "wrapper": {
+                            "width": "",
+                            "class": "",
+                            "id": ""
+                        },
+                        "collapsed": "",
+                        "min": 0,
+                        "max": 0,
+                        "layout": "table",
+                        "button_label": "",
+                        "sub_fields": [
+                            {
+                                "key": "field_594d71eef690b",
+                                "label": "List Item",
+                                "name": "list_item",
+                                "type": "text",
+                                "value": null,
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "",
+                                    "class": "",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "maxlength": ""
+                            }
+                        ]
                     }
                 ]
             },
@@ -750,6 +697,26 @@
                 "ui": 1,
                 "ui_on_text": "",
                 "ui_off_text": ""
+            },
+            {
+                "key": "field_59de645010030",
+                "label": "Copyright Margin Top",
+                "name": "copyright_mar_t",
+                "type": "text",
+                "value": null,
+                "instructions": "Add more space above the copyright text, i.e. \"25px\"",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
             }
         ],
         "location": [
