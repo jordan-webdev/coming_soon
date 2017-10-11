@@ -1021,15 +1021,14 @@ body {
   padding-right: 5%;
 }
 
-.panel__contact-item {
-  margin-right: 15px;
-  display: block;
+.panel__contact-wysiwyg h2{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
-@media screen and (min-width: 450px) {
-  .panel__contact-item {
-    display: inline-block;
-  }
+.panel__contact-wysiwyg p{
+  margin-top: 0;
+  margin-bottom: 0.3em;
 }
 
 .panel__social-media-list {
