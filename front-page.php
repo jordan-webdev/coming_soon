@@ -43,12 +43,16 @@ $copyright_force_breaks = get_field("copyright_force_breaks")
 ?>
 
 <div id="slider">
-	<?php if ($query->have_posts()) : ?>
-		<?php while ($query->have_posts()) : $query->the_post(); ?>
-			<?php the_post_thumbnail(); ?>
-		<?php endwhile; ?>
-	<?php endif; ?>
-	<?php wp_reset_postdata(); ?>
+  <?php
+  $slider_gallery = get_field("slider_gallery");
+
+	if ($slider_gallery) {
+    foreach ($slider_gallery as $gallery_item) {
+      $id = $gallery_item['ID'];
+      echo wp_get_attachment_image($id, 'full');
+    }
+  }
+  ?>
 </div>
 
 <!-- Panel -->
@@ -180,9 +184,9 @@ $copyright_force_breaks = get_field("copyright_force_breaks")
         <!-- Copyright -->
         <div class="panel__copyright">
           <p class="panel__copyright-statement" style="color: <?php echo esc_attr($copyright_colour); ?>; font-size: <?php echo ($copyright_font_size ? $copyright_font_size : '12px'); ?>;">
-            <span class="panel__copyright-brand">
-              <span class="panel__copyright-brand-copyright <?php echo $copyright_force_breaks ? "panel__copyright-break" : "" ?>">Copyright &copy; <?php echo date('Y'). ' ' .esc_html($copyright_brand); ?>.</span>
-              <span class="panel__copyright-brand-rights <?php echo $copyright_force_breaks ? "panel__copyright-break" : "" ?>">All rights reserved.</span>
+            <span class="panel__copyright-brand <?php echo $copyright_force_breaks ? "panel__copyright-break panel__copyright-break--mobile-only" : "" ?>">
+              <span class="panel__copyright-brand-copyright <?php echo $copyright_force_breaks ? "panel__copyright-break panel__copyright-break--mobile-only" : "" ?>">Copyright &copy; <?php echo date('Y'). ' ' .esc_html($copyright_brand); ?>.</span>
+              <span class="panel__copyright-brand-rights <?php echo $copyright_force_breaks ? "panel__copyright-break panel__copyright-break--mobile-only" : "" ?>">All rights reserved.</span>
             </span>
             <span class="panel__copyright-designed <?php echo $copyright_force_breaks ? "panel__copyright-break" : "" ?>">
               Design and Development by
