@@ -24,11 +24,13 @@ $address = get_field('address');
 $bg_image = get_field('background_image');
 $include_list = get_field('include_list');
 $border = get_field('border');
+
 $copyright_brand = get_field('copyright_brand');
 $copyright_brand = $copyright_brand ? $copyright_brand : get_bloginfo('title');
 $copyright_colour = get_field('copyright_colour');
 $copyright_colour = $copyright_colour ? $copyright_colour : 'inherit';
 $copyright_font_size = get_field('copyright_font_size');
+$copyright_force_breaks = get_field("copyright_force_breaks")
 ?>
 
 <?php get_header(); ?>
@@ -179,9 +181,10 @@ $copyright_font_size = get_field('copyright_font_size');
         <div class="panel__copyright">
           <p class="panel__copyright-statement" style="color: <?php echo esc_attr($copyright_colour); ?>; font-size: <?php echo ($copyright_font_size ? $copyright_font_size : '12px'); ?>;">
             <span class="panel__copyright-brand">
-              Copyright &copy; <?php echo date('Y'). ' ' .esc_html($copyright_brand); ?>. All rights reserved.
+              <span class="panel__copyright-brand-copyright <?php echo $copyright_force_breaks ? "panel__copyright-break" : "" ?>">Copyright &copy; <?php echo date('Y'). ' ' .esc_html($copyright_brand); ?>.</span>
+              <span class="panel__copyright-brand-rights <?php echo $copyright_force_breaks ? "panel__copyright-break" : "" ?>">All rights reserved.</span>
             </span>
-            <span class="panel__copyright-designed">
+            <span class="panel__copyright-designed <?php echo $copyright_force_breaks ? "panel__copyright-break" : "" ?>">
               Design and Development by
               <a class="panel__copyright-designed-link" href="http://www.dolcemedia.ca/" rel="noopener noreferrer" target="_blank">Dolce Media Group</a>
             </span>
