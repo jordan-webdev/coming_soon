@@ -1049,3 +1049,12 @@ body {
   margin-bottom: 0;
   font-size: 13px;
 }
+
+.panel__copyright-break{
+  display: block;
+}
+@media screen and (min-width: 814px){
+  .panel__copyright-break--mobile-only{
+    display: inline;
+  }
+}
