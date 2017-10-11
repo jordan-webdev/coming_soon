@@ -22,9 +22,9 @@ $phone = get_field('phone');
 $email = get_field('email');
 $address = get_field('address');
 $bg_image = get_field('background_image');
-$include_list = get_field('include_list');
 $border = get_field('border');
 
+$copyright_mar_t = get_field('copyright_mar_t');
 $copyright_brand = get_field('copyright_brand');
 $copyright_brand = $copyright_brand ? $copyright_brand : get_bloginfo('title');
 $copyright_colour = get_field('copyright_colour');
@@ -111,28 +111,32 @@ $copyright_force_breaks = get_field("copyright_force_breaks")
 					<?php the_content(); ?>
 				</div>
 
-        <!-- List -->
-				<?php if ($include_list): ?>
-          <div class="panel__list-wrapper">
-            <?php
-            $title = get_field('list_title');
-            if ($title):
-            ?>
-            <div class="panel__list-title-wrapper">
-              <div style="background-color: <?php echo sanitize_hex_color($font_color); ?>" class="panel__list-title-line"></div>
-              <h2 class="panel__list-title"><?php echo esc_html($title); ?></h2>
-              <div style="background-color: <?php echo sanitize_hex_color($font_color); ?>" class="panel__list-title-line"></div>
-            </div>
-            <?php endif; ?>
+        <!-- Lists -->
+				<?php if (have_rows("panel_lists")): ?>
+          <div class="panel__lists-wrapper">
+            <?php while (have_rows("panel_lists")): the_row(); ?>
+              <div class="panel__list-wrapper">
+                <?php
+                $title = get_sub_field('list_title');
+                if ($title):
+                ?>
+                <div class="panel__list-title-wrapper">
+                  <div style="background-color: <?php echo sanitize_hex_color($font_color); ?>" class="panel__list-title-line"></div>
+                  <h2 class="panel__list-title"><?php echo esc_html($title); ?></h2>
+                  <div style="background-color: <?php echo sanitize_hex_color($font_color); ?>" class="panel__list-title-line"></div>
+                </div>
+                <?php endif; ?>
 
-            <?php if (have_rows('list_items')): ?>
-              <ul class="panel__list">
-                <?php while (have_rows('list_items')): the_row(); ?>
-                  <?php $list_item = get_sub_field('list_item'); ?>
-                  <li class="panel__list-item"><?php echo esc_html($list_item); ?></li>
-                <?php endwhile; ?>
-              </ul>
-            <?php endif; ?>
+                <?php if (have_rows('list_items')): ?>
+                  <ul class="panel__list">
+                    <?php while (have_rows('list_items')): the_row(); ?>
+                      <?php $list_item = get_sub_field('list_item'); ?>
+                      <li class="panel__list-item"><?php echo esc_html($list_item); ?></li>
+                    <?php endwhile; ?>
+                  </ul>
+                <?php endif; ?>
+              </div>
+            <?php endwhile; ?>
           </div>
         <?php endif; ?>
 
@@ -141,28 +145,9 @@ $copyright_force_breaks = get_field("copyright_force_breaks")
       <!-- Contact -->
       <div class="panel__contact-wrapper" style="background-color:<?php echo sanitize_hex_color($contact_background_colour); ?>; color: <?php echo sanitize_hex_color($contact_text_colour); ?>; font-size: <?php echo ($contact_font_size ? esc_attr($contact_font_size) : "16px"); ?>;">
 
-        <!-- Contact Items -->
-        <div class="panel__contact">
-          <?php if ($phone): ?>
-            <a class="panel__contact-item" href="tel:<?php echo esc_attr($phone); ?>">
-              <span class="bold">Phone</span>
-              <?php echo esc_html($phone); ?>
-            </a>
-          <?php endif; ?>
-
-          <?php if ($email): ?>
-            <a class="panel__contact-item" href="mailto:<?php echo esc_attr($email); ?>">
-              <span class="bold">Email</span>
-              <?php echo esc_html($email); ?>
-            </a>
-          <?php endif; ?>
-
-          <?php if ($address): ?>
-            <a class="panel__contact-item" href="https://www.google.ca/maps/place/<?php echo esc_attr($address); ?>">
-              <span class="bold">Address</span>
-              <?php echo esc_html($address); ?>
-            </a>
-          <?php endif; ?>
+        <!-- Contact WYSIWYG -->
+        <div class="panel__contact-wysiwyg">
+          <?php echo get_field("contact_wysiwyg"); ?>
         </div>
 
         <!-- Social Media -->
@@ -182,7 +167,7 @@ $copyright_force_breaks = get_field("copyright_force_breaks")
         <?php endif; ?>
 
         <!-- Copyright -->
-        <div class="panel__copyright">
+        <div class="panel__copyright" <?php echo ($copyright_mar_t ? "style=\"margin-top: ".$copyright_mar_t.";\"" : "" ); ?>>
           <p class="panel__copyright-statement" style="color: <?php echo esc_attr($copyright_colour); ?>; font-size: <?php echo ($copyright_font_size ? $copyright_font_size : '12px'); ?>;">
             <span class="panel__copyright-brand <?php echo $copyright_force_breaks ? "panel__copyright-break panel__copyright-break--mobile-only" : "" ?>">
               <span class="panel__copyright-brand-copyright <?php echo $copyright_force_breaks ? "panel__copyright-break panel__copyright-break--mobile-only" : "" ?>">Copyright &copy; <?php echo date('Y'). ' ' .esc_html($copyright_brand); ?>.</span>
