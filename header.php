@@ -18,7 +18,8 @@
 <link rel="profile" href="http://gmpg.org/xfn/11" rel="stylesheet">
 
 <?php
-$original_font = get_field('google_font', 6);
+$frontpage_id = get_option( 'page_on_front' );
+$original_font = get_field('google_font', $frontpage_id);
 $concat_font = str_replace(' ', '+', $original_font);
 $font = strtolower($concat_font);
 ?>
