@@ -4,6 +4,12 @@ $images = $template . '/images';
 
 $logo = get_field('logo');
 $logo_bg_color = get_field('logo_background_color');
+list($r, $g, $b) = sscanf($logo_bg_color, "#%02x%02x%02x");
+$opacity = get_field('logo_background_opacity');
+$opacity = $opacity ? $opacity : 1;
+$logo_bg_color_rgb = "rgba(" .$r. "," .$g. "," .$b. "," .$opacity. ")";
+
+
 $coming_soon_graphic = get_field('coming_soon_graphic');
 $coming_soon_graphic_mobile = get_field('coming_soon_graphic_mobile');
 $font_color = get_field('font_colour');
@@ -16,8 +22,13 @@ $opacity = $opacity ? $opacity : 1;
 $body_bg_color_rgb = "rgba(" .$r. "," .$g. "," .$b. "," .$opacity. ")";
 
 $contact_background_colour = get_field('contact_background_colour');
+list($r, $g, $b) = sscanf($contact_background_colour, "#%02x%02x%02x");
+$opacity = get_field('contact_background_opacity');
+$opacity = $opacity ? $opacity : 1;
+$contact_bg_color_rgb = "rgba(" .$r. "," .$g. "," .$b. "," .$opacity. ")";
 $contact_text_colour = get_field('contact_text_colour');
 $contact_font_size = get_field('contact_font_size');
+
 $phone = get_field('phone');
 $email = get_field('email');
 $address = get_field('address');
@@ -34,13 +45,6 @@ $copyright_force_breaks = get_field("copyright_force_breaks")
 ?>
 
 <?php get_header(); ?>
-
-<?php
-    $args = array(
-        'post_type' => 'images'
-    );
-    $query = new WP_Query($args);
-?>
 
 <div id="slider">
   <?php
@@ -89,7 +93,9 @@ $copyright_force_breaks = get_field("copyright_force_breaks")
       </div>
 
       <!-- Logo -->
-      <?php $style = $logo_bg_color ? 'background-color: ' .$logo_bg_color .';' : 'background-color: transparent;'; ?>
+      <?php
+        $style = $logo_bg_color ? 'background-color: ' .$logo_bg_color_rgb .';' : "background-color: transparent;";
+      ?>
 
 			<div class="panel__logo" style="<?php echo esc_attr($style); ?>">
         <img src="<?php echo esc_url($logo['url']); ?> ?>" alt="<?php echo esc_attr($logo['alt']); ?>">
@@ -143,7 +149,10 @@ $copyright_force_breaks = get_field("copyright_force_breaks")
       </div><!-- /content -->
 
       <!-- Contact -->
-      <div class="panel__contact-wrapper" style="background-color:<?php echo sanitize_hex_color($contact_background_colour); ?>; color: <?php echo sanitize_hex_color($contact_text_colour); ?>; font-size: <?php echo ($contact_font_size ? esc_attr($contact_font_size) : "16px"); ?>;">
+      <?php
+        $bg_colour = $contact_background_colour ? 'background-color: ' .$contact_bg_color_rgb .';' : 'background-color: transparent;';
+      ?>
+      <div class="panel__contact-wrapper" style="<?php echo $bg_colour; ?> color: <?php echo sanitize_hex_color($contact_text_colour); ?>; font-size: <?php echo ($contact_font_size ? esc_attr($contact_font_size) : "16px"); ?>;">
 
         <!-- Contact WYSIWYG -->
         <div class="panel__contact-wysiwyg">
