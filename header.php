@@ -22,6 +22,7 @@ $frontpage_id = get_option( 'page_on_front' );
 $original_font = get_field('google_font', $frontpage_id);
 $concat_font = str_replace(' ', '+', $original_font);
 $font = strtolower($concat_font);
+$extra_font = get_field('extra_google_font', $frontpage_id);
 ?>
 <style>
   body{
@@ -30,6 +31,9 @@ $font = strtolower($concat_font);
 </style>
 
 <link href="https://fonts.googleapis.com/css?family=<?php echo esc_html($concat_font); ?>" rel="stylesheet">
+<?php if ($extra_font): ?>
+  <link href="<?php echo esc_url($extra_font); ?>" rel="stylesheet">
+<?php endif; ?>
 
 <?php wp_head(); ?>
 </head>
