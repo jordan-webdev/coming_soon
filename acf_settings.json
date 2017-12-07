@@ -188,6 +188,22 @@
                 "maxlength": ""
             },
             {
+                "key": "field_5a297f5e5194a",
+                "label": "Extra Google Fonts",
+                "name": "extra_google_font",
+                "type": "url",
+                "instructions": "If there are more Google Fonts, add the URL here. Note, you will need to add the inline styles yourself when using these font families.",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "placeholder": ""
+            },
+            {
                 "key": "field_594d70f9f6906",
                 "label": "Font Colour",
                 "name": "font_colour",
