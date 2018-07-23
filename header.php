@@ -1,8 +1,6 @@
 <?php
 /**
- * The header for our theme.
- *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
+ * The header for the Coming Soon theme.
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
@@ -21,12 +19,11 @@
 $frontpage_id = get_option( 'page_on_front' );
 $original_font = get_field('google_font', $frontpage_id);
 $concat_font = str_replace(' ', '+', $original_font);
-$font = strtolower($concat_font);
 $extra_font = get_field('extra_google_font', $frontpage_id);
 ?>
 <style>
   body{
-    font-family: <?php echo $font; ?>
+    font-family: <?php echo esc_html($original_font); ?>
   }
 </style>
 
