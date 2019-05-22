@@ -14,4 +14,3 @@ Getting Started
 4. In Settings > Reading, select "A static front page" and select the newly created page.
 5. Set the ACF fields to the home page created in step 3.
 6. Remember to delete any excess themes and plugins. Try to keep one other theme, just in case.
-7. In header.php, on line 21, set the id of the Google Font field to match the home page
