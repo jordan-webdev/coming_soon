@@ -97,9 +97,11 @@ $copyright_force_breaks = get_field("copyright_force_breaks")
         $style = $logo_bg_color ? 'background-color: ' .$logo_bg_color_rgb .';' : "background-color: transparent;";
       ?>
 
-			<div class="panel__logo" style="<?php echo esc_attr($style); ?>">
-        <img src="<?php echo esc_url($logo['url']); ?> ?>" alt="<?php echo esc_attr($logo['alt']); ?>">
-			</div>
+      <?php if ($logo): ?>
+        <div class="panel__logo" style="<?php echo esc_attr($style); ?>">
+          <img src="<?php echo esc_url($logo['url']); ?>" alt="<?php echo esc_attr($logo['alt']); ?>">
+  			</div>
+      <?php endif; ?>	
 
       <!-- Content -->
       <?php
