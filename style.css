@@ -1081,6 +1081,7 @@ body {
   margin-top: 5px;
   margin-bottom: 0;
   font-size: 13px;
+  opacity: .5;
 }
 
 .panel__copyright-break {
