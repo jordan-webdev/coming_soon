@@ -1081,6 +1081,9 @@ body {
   margin-top: 5px;
   margin-bottom: 0;
   font-size: 13px;
+}
+
+.panel__copyright-designed {
   opacity: .5;
 }
 
